@@ -468,10 +468,10 @@ const styles = {
   },
 
   milestoneDot: {
-    width: '8px',
-    height: '8px',
-    borderRadius: '50%',
-    background: '#E8002D',
+    width: '2px',
+    height: '16px',
+    borderRadius: '0',
+    background: '#0040CC',
     flexShrink: 0,
   },
 
