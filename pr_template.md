@@ -1,9 +1,9 @@
-# [YOUR FULL NAME]'s Submission
-**Date**: [date here]
+# [Jack He]'s Submission
+**Date**: 4/19/26
 
-**Email**: [email here]
+**Email**: jackhe@bu.edu
 
-**Class Year**: [year here]
+**Class Year**: 2029
 
 **Favorite F1 Team**: [team here]
 

@@ -1,0 +1,101 @@
+:root {
+  --navy:        #090909;
+  --navy-mid:    #121212;
+  --navy-light:  #1C1C1C;
+  --red:         #E8002D;
+  --red-dark:    #B8001F;
+  --yellow:      #FFB800;
+  --blue:        #0040CC;
+  --white:       #F0F0F0;
+  --grey:        #7A8899;
+  --border:      rgba(0,64,204,0.15);
+
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-body:    'Barlow', sans-serif;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--navy);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--white);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes stripeSlide {
+  0%   { transform: translateX(-200%) skewX(-20deg); opacity: 0.6; }
+  100% { transform: translateX(200vw)  skewX(-20deg); opacity: 0; }
+}
+
+@keyframes pageMountFade {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+  0%   { opacity: 0.03; transform: scale(1); }
+  50%  { opacity: 0.07; transform: scale(1.05); }
+  100% { opacity: 0.03; transform: scale(1); }
+}
+
+@keyframes rowFadeIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@media (max-width: 640px) {
+  .nav-inner { padding: 0 12px !important; }
+  .nav-links  { gap: 14px !important; }
+  .nav-link   { font-size: 11px !important; letter-spacing: 0.06em; }
+  .page-title { font-size: clamp(32px, 8vw, 48px) !important; }
+  .tab-row    { flex-wrap: wrap !important; }
+}
