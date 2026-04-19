@@ -17,7 +17,7 @@ const RESULTS_COLS = [
   { header: 'RACE',    type: 'normal', render: r => r.raceName },
   { header: 'CIRCUIT', type: 'muted',  render: r => r.Circuit?.circuitName },
   { header: 'DATE',    type: 'muted',  render: r => r.date },
-  { header: 'WINNER',  type: 'normal', render: r => r.Results?.[0]?.Driver?.familyName || 'N/A' },
+  { header: 'TOP FINISHER',  type: 'normal', render: r => r.Results?.[0]?.Driver?.familyName || 'N/A' },
   { header: 'PTS',     type: 'yellow', render: r => r.Results?.[0]?.points || '0' },
 ]
 
