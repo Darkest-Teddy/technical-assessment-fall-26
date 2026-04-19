@@ -73,7 +73,7 @@ function Home() {
     <>
       <div style={styles.hero}>
 
-        <video autoPlay muted loop playsInline style={styles.bgVideo}>
+        <video autoPlay muted loop playsInline aria-hidden="true" style={styles.bgVideo}>
           <source src={heroBg} type="video/mp4" />
         </video>
         <div style={styles.stripe} />
@@ -87,7 +87,7 @@ function Home() {
             <span style={styles.headlineSub}>SEASONAL PITWALL</span>
           </h1>
 
-          <span style={styles.accentLine} />
+          <span aria-hidden="true" style={styles.accentLine} />
 
           <p style={styles.subtitle}>
             Explore race-by-race results, constructor standings, driver performance stats,
@@ -260,7 +260,7 @@ const styles = {
     fontSize: '13px',
     fontWeight: 600,
     letterSpacing: '0.3em',
-    color: '#FFC906',
+    color: '#FFB800',
     marginBottom: '28px',
     opacity: 0.9,
   },
@@ -379,7 +379,7 @@ const styles = {
     fontSize: '11px',
     fontWeight: 600,
     letterSpacing: '0.15em',
-    color: '#4A5B78',
+    color: '#7A8899',
     marginTop: '4px',
   },
 
@@ -409,11 +409,11 @@ const styles = {
   },
 
   foundedSubtitle: {
-    fontFamily: "'Orbitron', sans-serif",
-    fontSize: '14px',
-    fontWeight: 500,
-    color: '#4A5B78',
-    letterSpacing: '0.15em',
+    fontFamily: "'Barlow Condensed', sans-serif",
+    fontSize: '13px',
+    fontWeight: 600,
+    color: '#7A8899',
+    letterSpacing: '0.2em',
     marginTop: '8px',
     marginBottom: '20px',
   },
@@ -423,7 +423,7 @@ const styles = {
     fontSize: '12px',
     fontWeight: 600,
     letterSpacing: '0.3em',
-    color: '#FFC906',
+    color: '#FFB800',
     marginBottom: '16px',
   },
 
@@ -462,22 +462,23 @@ const styles = {
     fontFamily: "'Barlow Condensed', sans-serif",
     fontSize: '20px',
     fontWeight: 900,
-    color: '#E8002D',
+    color: '#FFB800',
     minWidth: '52px',
+    textAlign: 'right',
   },
 
   milestoneDot: {
     width: '8px',
     height: '8px',
     borderRadius: '50%',
-    background: '#0055FF',
+    background: '#E8002D',
     flexShrink: 0,
   },
 
   milestoneText: {
     fontFamily: "'Barlow', sans-serif",
     fontSize: '14px',
-    color: '#4A5B78',
+    color: '#7A8899',
     lineHeight: 1.5,
   },
 }

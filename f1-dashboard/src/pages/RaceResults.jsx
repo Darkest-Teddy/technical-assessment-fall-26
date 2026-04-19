@@ -145,13 +145,14 @@ function RaceResults() {
 
       <div style={styles.header}>
         <p style={styles.eyebrow}>{season} SEASON · RED BULL RACING</p>
-        <h1 style={styles.title}>RACE RESULTS</h1>
-        <span style={styles.accentLine} />
+        <h1 style={styles.title}>RESULTS</h1>
+        <span aria-hidden="true" style={styles.accentLine} />
 
         {/* Selectors row */}
         <div style={styles.selectorRow}>
-          <label style={styles.selectorLabel}>SEASON</label>
+          <label htmlFor="season-select" style={styles.selectorLabel}>SEASON</label>
           <select
+            id="season-select"
             value={season}
             onChange={(e) => setSeason(e.target.value)}
             style={styles.select}
@@ -161,8 +162,9 @@ function RaceResults() {
 
           {activeTab === 'LAP TIMES' && (
             <>
-              <label style={styles.selectorLabel}>ROUND</label>
+              <label htmlFor="round-select" style={styles.selectorLabel}>ROUND</label>
               <select
+                id="round-select"
                 value={selectedRound}
                 onChange={(e) => setSelectedRound(e.target.value)}
                 style={styles.select}
@@ -180,10 +182,12 @@ function RaceResults() {
         </div>
 
         {/* Tab switcher */}
-        <div style={styles.tabRow}>
+        <div role="tablist" style={styles.tabRow}>
           {TABS.map((tab) => (
             <button
               key={tab}
+              role="tab"
+              aria-selected={activeTab === tab}
               onClick={() => setActiveTab(tab)}
               style={{ ...styles.tab, ...(activeTab === tab ? styles.tabActive : {}) }}
             >
@@ -196,7 +200,7 @@ function RaceResults() {
       {isLoading ? (
         <p style={styles.loading}>LOADING...</p>
       ) : activeTab === 'LAP TIMES' && !selectedRound ? (
-        <p style={styles.placeholder}>Select a round above to view fastest laps</p>
+        <p style={styles.placeholder}>Select a race round from the ROUND selector to view fastest laps</p>
       ) : (
         <div style={{ opacity: visible ? 1 : 0, transition: 'opacity 0.4s ease-out' }}>
           <Table key={activeTab} data={activeData} columns={activeCols} />
@@ -225,7 +229,7 @@ const styles = {
     fontSize: '12px',
     fontWeight: 600,
     letterSpacing: '0.3em',
-    color: '#FFC906',
+    color: '#FFB800',
     marginBottom: '12px',
   },
 
@@ -308,6 +312,7 @@ const styles = {
     color: '#7A8899',
     textAlign: 'center',
     padding: '60px 0',
+    animation: 'loadingPulse 1.2s ease-in-out infinite',
   },
 
   placeholder: {

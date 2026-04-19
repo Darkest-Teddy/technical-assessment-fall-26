@@ -1,22 +1,29 @@
+/* index.css - global resets, design tokens, keyframes
+ * Component styles live inline in each .jsx file.
+ */
+
+/* ── DESIGN TOKENS ───────────────────────────────────────────────────────── */
 :root {
-  --navy:        #090909;
-  --navy-mid:    #121212;
-  --navy-light:  #1C1C1C;
-  --red:         #E8002D;
-  --red-dark:    #B8001F;
-  --yellow:      #FFB800;
-  --blue:        #0040CC;
-  --white:       #F0F0F0;
-  --grey:        #7A8899;
+  --navy:        #090909;   /* page background */
+  --navy-mid:    #121212;   /* card / table row */
+  --navy-light:  #1C1C1C;   /* hover highlight */
+  --red:         #E8002D;   /* RBR brand red */
+  --red-dark:    #B8001F;   /* button hover */
+  --yellow:      #FFB800;   /* gold accent */
+  --blue:        #0040CC;   /* Oracle blue */
+  --white:       #F0F0F0;   /* body text */
+  --grey:        #7A8899;   /* muted / secondary text */
   --border:      rgba(0,64,204,0.15);
 
   --font-display: 'Barlow Condensed', sans-serif;
   --font-body:    'Barlow', sans-serif;
 }
 
+/* ── RESET ───────────────────────────────────────────────────────────────── */
 *, *::before, *::after {
   margin: 0;
   padding: 0;
+  /* border-box: width includes padding + border, not just content */
   box-sizing: border-box;
 }
 
@@ -32,6 +39,7 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  /* hide scrollbar visually while keeping scroll functionality */
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -58,44 +66,87 @@ ul, ol {
 
 img {
   max-width: 100%;
-  display: block;
+  display: block; /* removes the phantom gap below inline images */
 }
 
+/* Only shows for keyboard navigation (Tab), not mouse clicks - WCAG AA */
+:focus-visible {
+  outline: 2px solid #0040CC;
+  outline-offset: 3px;
+}
+
+/* ── KEYFRAMES ───────────────────────────────────────────────────────────────
+ * Only opacity and transform are animated - both are GPU-composited so they
+ * never trigger layout recalculation, keeping animations at 60fps.
+ */
+
+/* Stats.jsx, RaceResults.jsx - page content slides up on mount */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(40px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* Chart.jsx, Table.jsx - simple opacity fade */
 @keyframes fadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
 
+/* Home.jsx - diagonal red stripe sweeps across the hero on load */
 @keyframes stripeSlide {
   0%   { transform: translateX(-200%) skewX(-20deg); opacity: 0.6; }
   100% { transform: translateX(200vw)  skewX(-20deg); opacity: 0; }
 }
 
+/* App.jsx - fires on every page navigation.
+ * key={location.pathname} in AnimatedRoutes remounts the wrapper div on each
+ * route change, which restarts this animation automatically. */
 @keyframes pageMountFade {
   from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
+/* App.jsx - slow breathing effect for the background orbs.
+ * Three orbs run at 8s, 10s, 12s with different delays so they're always
+ * out of phase - no two breathe in sync. */
 @keyframes pulseGlow {
   0%   { opacity: 0.03; transform: scale(1); }
   50%  { opacity: 0.07; transform: scale(1.05); }
   100% { opacity: 0.03; transform: scale(1); }
 }
 
+/* Table.jsx - rows slide in from the left.
+ * Each row gets animationDelay: index * 40ms so they cascade in sequence. */
 @keyframes rowFadeIn {
   from { opacity: 0; transform: translateX(-8px); }
   to   { opacity: 1; transform: translateX(0); }
 }
 
+/* Stats.jsx, RaceResults.jsx - "LOADING..." text pulses while fetching.
+ * 0% and 100% share opacity: 1 so the loop has no jump at the cycle boundary. */
+@keyframes loadingPulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.25; }
+}
+
+/* ── RESPONSIVE ──────────────────────────────────────────────────────────── */
+/* classNames used here because media queries can't override inline styles */
 @media (max-width: 640px) {
   .nav-inner { padding: 0 12px !important; }
   .nav-links  { gap: 14px !important; }
   .nav-link   { font-size: 11px !important; letter-spacing: 0.06em; }
   .page-title { font-size: clamp(32px, 8vw, 48px) !important; }
   .tab-row    { flex-wrap: wrap !important; }
+}
+
+/* ── ACCESSIBILITY: REDUCED MOTION ───────────────────────────────────────────
+ * Collapses all animations to near-instant when the OS "Reduce Motion"
+ * setting is enabled. !important overrides inline animation-duration values
+ * set via style={{ animation: '...' }} props in React components. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

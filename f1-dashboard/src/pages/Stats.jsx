@@ -81,7 +81,7 @@ function Stats() {
       <div style={styles.header}>
         <p style={styles.eyebrow}>{season} SEASON · CONSTRUCTOR PERFORMANCE</p>
         <h1 style={styles.title}>TEAM STATS</h1>
-        <span style={styles.accentLine} />
+        <span aria-hidden="true" style={styles.accentLine} />
 
         {/* ── SEASON SELECTOR ────────────────────────────────────────────── */}
         <div style={styles.selectorRow}>
@@ -99,7 +99,7 @@ function Stats() {
         </div>
 
         <p style={styles.subtitle}>
-          Red Bull Racing constructor points scored per race - {season} season
+          Points per race weekend, both drivers combined
         </p>
       </div>
 
@@ -133,7 +133,7 @@ const styles = {
     fontSize: '12px',
     fontWeight: 600,
     letterSpacing: '0.3em',
-    color: '#FFC906',
+    color: '#FFB800',
     marginBottom: '12px',
   },
 
@@ -158,6 +158,7 @@ const styles = {
     alignItems: 'center',
     gap: '12px',
     marginBottom: '16px',
+    flexWrap: 'wrap',
   },
 
   selectorLabel: {
@@ -200,6 +201,7 @@ const styles = {
     fontSize: '18px',
     letterSpacing: '0.2em',
     color: '#7A8899',
+    animation: 'loadingPulse 1.2s ease-in-out infinite',
   },
 
 }

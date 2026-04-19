@@ -101,7 +101,7 @@ const styles = {
     fontSize: '14px',
     fontWeight: 700,
     letterSpacing: '0.12em',
-    color: '#4A5B78',
+    color: '#7A8899',
     paddingBottom: '4px',
     borderBottom: '2px solid transparent',
     transition: 'color 0.2s, border-color 0.2s',

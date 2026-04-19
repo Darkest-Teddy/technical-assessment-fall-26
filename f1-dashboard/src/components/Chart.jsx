@@ -38,7 +38,7 @@ function CustomTooltip({ active, payload, label }) {
 function Chart({ data = [] }) {
 
   // Find the highest points value so we can highlight the best season in yellow
-  const maxPoints = Math.max(...data.map((d) => d.points))
+  const maxPoints = Math.max(0, ...data.map((d) => d.points))
 
   // We add a "fill" color to each data entry before passing to Recharts
   // This avoids using Cell (which is deprecated in Recharts v3)
@@ -46,7 +46,7 @@ function Chart({ data = [] }) {
   const coloredData = data.map((entry) => ({
     ...entry, // copy all existing fields (season, points)
     // best season gets yellow, all others get red
-    fill: entry.points === maxPoints ? '#FFC906' : '#E8002D'
+    fill: entry.points === maxPoints ? '#FFB800' : '#E8002D'
   }))
 
   return (
@@ -67,7 +67,7 @@ function Chart({ data = [] }) {
           {/* X axis - season years along the bottom */}
           <XAxis
             dataKey="race"
-            tick={{ fill: '#4A5B78', fontFamily: 'Barlow Condensed', fontSize: 11, angle: -45, textAnchor: 'end', dy: 4 }}
+            tick={{ fill: '#7A8899', fontFamily: 'Barlow Condensed', fontSize: 11, angle: -45, textAnchor: 'end', dy: 4 }}
             axisLine={{ stroke: 'rgba(255,255,255,0.1)' }}
             tickLine={false}
             interval={0}
@@ -76,7 +76,7 @@ function Chart({ data = [] }) {
 
           {/* Y axis - points scale on the left */}
           <YAxis
-            tick={{ fill: '#4A5B78', fontFamily: 'Barlow Condensed', fontSize: 13 }}
+            tick={{ fill: '#7A8899', fontFamily: 'Barlow Condensed', fontSize: 13 }}
             axisLine={false}
             tickLine={false}
           />
@@ -108,7 +108,7 @@ function Chart({ data = [] }) {
           <span style={styles.legendLabel}>SEASON POINTS</span>
         </div>
         <div style={styles.legendItem}>
-          <div style={{ ...styles.legendDot, background: '#FFC906' }} />
+          <div style={{ ...styles.legendDot, background: '#FFB800' }} />
           <span style={styles.legendLabel}>BEST SEASON</span>
         </div>
       </div>
@@ -121,7 +121,7 @@ function Chart({ data = [] }) {
 const styles = {
 
   card: {
-    background: '#0D1526',
+    background: '#121212',
     border: '1px solid rgba(255,255,255,0.06)',
     padding: '32px 16px 16px',
     animation: 'fadeIn 0.8s ease-out both',
@@ -151,7 +151,7 @@ const styles = {
     fontSize: '11px',
     fontWeight: 600,
     letterSpacing: '0.15em',
-    color: '#4A5B78',
+    color: '#7A8899',
   },
 
 }
@@ -159,24 +159,26 @@ const styles = {
 const tooltipStyles = {
 
   box: {
-    background: '#0A0F1E',
+    background: '#090909',
     border: '1px solid #E8002D',
     padding: '6px 10px',
   },
 
   label: {
-    fontFamily: "'Inter', sans-serif",
-    fontSize: '10px',
-    fontWeight: 400,
-    color: '#4A5B78',
-    marginBottom: '2px',
+    fontFamily: "'Barlow Condensed', sans-serif",
+    fontSize: '11px',
+    fontWeight: 600,
+    letterSpacing: '0.15em',
+    color: '#7A8899',
+    marginBottom: '4px',
   },
 
   value: {
-    fontFamily: "'Space Mono', monospace",
-    fontSize: '13px',
-    fontWeight: 700,
-    color: '#FFC906',
+    fontFamily: "'Barlow Condensed', sans-serif",
+    fontSize: '20px',
+    fontWeight: 900,
+    letterSpacing: '0.05em',
+    color: '#FFB800',
   },
 
 }

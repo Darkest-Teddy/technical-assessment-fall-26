@@ -38,12 +38,13 @@ function Table({ data = [], columns = [] }) {
       <div style={styles.searchRow}>
         <input
           type="text"
-          placeholder="Search races, circuits, drivers..."
+          placeholder="Search..."
           value={searchTerm}
           onChange={handleSearch}
           style={styles.searchInput}
+          aria-label="Search table"
         />
-        <select value={rowsPerPage} onChange={handleRowsPerPage} style={styles.rowsSelect}>
+        <select value={rowsPerPage} onChange={handleRowsPerPage} style={styles.rowsSelect} aria-label="Rows per page">
           <option value={10}>10 rows</option>
           <option value={20}>20 rows</option>
           <option value={50}>50 rows</option>
@@ -92,6 +93,7 @@ function Table({ data = [], columns = [] }) {
 
       <div style={styles.pagination}>
         <button
+          aria-label="First page"
           onClick={() => setCurrentPage(0)}
           disabled={currentPage === 0}
           style={{ ...styles.btn, ...(currentPage === 0 ? styles.btnDisabled : {}) }}
@@ -102,6 +104,7 @@ function Table({ data = [], columns = [] }) {
         </button>
 
         <button
+          aria-label="Previous page"
           onClick={() => setCurrentPage((p) => Math.max(p - 1, 0))}
           disabled={currentPage === 0}
           style={{ ...styles.btn, ...(currentPage === 0 ? styles.btnDisabled : {}) }}
@@ -116,6 +119,7 @@ function Table({ data = [], columns = [] }) {
         </span>
 
         <button
+          aria-label="Next page"
           onClick={() => setCurrentPage((p) => Math.min(p + 1, totalPages - 1))}
           disabled={currentPage >= totalPages - 1}
           style={{ ...styles.btn, ...(currentPage >= totalPages - 1 ? styles.btnDisabled : {}) }}
@@ -126,6 +130,7 @@ function Table({ data = [], columns = [] }) {
         </button>
 
         <button
+          aria-label="Last page"
           onClick={() => setCurrentPage(totalPages - 1)}
           disabled={currentPage >= totalPages - 1}
           style={{ ...styles.btn, ...(currentPage >= totalPages - 1 ? styles.btnDisabled : {}) }}
