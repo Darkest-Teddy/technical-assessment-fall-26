@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 
 import logo from '../assets/Redbull-Racing-Logo-Vector.svg-.png'
-import heroBg from '../assets/4k Red Bull 2026 RB22 Live Wallpaper _ With Download Link 4k _ F1 _ Max Verstappen _ 3840x2160 UHD_1080p.mp4'
+import heroBg from '../assets/background-video.mp4'
 
 const STAT_TARGETS = { constructors: 6, drivers: 8, wins: 125 }
 
