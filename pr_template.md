@@ -26,9 +26,10 @@ Please check off which features you have implemented:
 - [ ] Includes a custom UI for Boolean search logic (e.g., AND/OR dropdowns or toggles).
 
 ## Screen Recording 
-**Link**: [Link](https://drive.google.com/file/d/1ru3AVmLoaciaaCwjKClikFBYJRm2d3b2/view?usp=sharing)
+**Link**: [Google Drive](https://drive.google.com/file/d/1ru3AVmLoaciaaCwjKClikFBYJRm2d3b2/view?usp=sharing)
 
-**Website URL:** [Link](https://redbullracing-data.vercel.app/)
+## Website URL
+**Link**: [Vercel](https://redbullracing-data.vercel.app/)
 
 ## Written Portion
 1. **How did the project go? What parts of it did you most enjoy / find yourself good at?**
